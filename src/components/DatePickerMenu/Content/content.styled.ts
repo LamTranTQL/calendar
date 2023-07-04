@@ -38,6 +38,15 @@ const Wrapper = styled.div`
   }
 `;
 
+const Current = styled(Wrapper)`
+  border: 1px solid #072947;
+`;
+
+const Selected = styled(Wrapper)`
+  border: none;
+  background-color: #093359;
+`;
+
 const Item = styled.span`
   font-weight: 400;
   font-size: 14px;
@@ -49,4 +58,4 @@ const ItemInactive = styled(Item)`
   color: #bcbcbc;
 `;
 
-export { Model, Row, Cell, Wrapper, Item, ItemInactive };
+export { Model, Row, Cell, Wrapper, Current, Selected, Item, ItemInactive };

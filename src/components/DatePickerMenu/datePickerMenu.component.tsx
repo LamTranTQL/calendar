@@ -4,9 +4,9 @@ import { Model } from "./datePickerMenu.styled";
 import Header from "./Header/header.component";
 import Content from "./Content/content.component";
 
-function DatePickerMenu() {
+function DatePickerMenu(props: any) {
   return (
-    <Model>
+    <Model ref={props.ref} {...props}>
       <Header />
       <Content />
       {/* <Bottom>
