@@ -1,11 +1,18 @@
 import React, { useContext } from "react";
-import { Cell, Item, ItemDesc, Model, Row, Wrapper } from "./content.styled";
+import {
+  Cell,
+  Item,
+  ItemInactive,
+  Model,
+  Row,
+  Wrapper,
+} from "./content.styled";
 import { CalendarContext } from "../../Context/calendarContext.provider";
 
 const Days = ["Su", "Mo", "Tu", "we", "Th", "Fr", "Sa"];
 
 function Content() {
-  const { datesOfLastMonth, datesOfMonth, datesOfNextMonth } =
+  const { datesOfLastMonth, datesOfMonth, datesOfNextMonth, isToday } =
     useContext(CalendarContext);
 
   return (
@@ -23,31 +30,39 @@ function Content() {
       </Row>
 
       <Row>
-        {datesOfLastMonth.map((item: number, i: number) => {
+        {datesOfLastMonth.map((item: any, i: number) => {
           return (
             <Cell>
               <Wrapper>
-                <ItemDesc>{item}</ItemDesc>
+                <ItemInactive>{item.dddd}</ItemInactive>
               </Wrapper>
             </Cell>
           );
         })}
 
-        {datesOfMonth.map((item: number, i: number) => {
+        {datesOfMonth.map((item: any, i: number) => {
           return (
             <Cell>
-              <Wrapper>
-                <Item>{item}</Item>
+              <Wrapper
+                className={
+                  item.yyyy === isToday.yyyy &&
+                  item.mmmm === isToday.mmmm &&
+                  item.dddd === isToday.dddd
+                    ? "current"
+                    : ""
+                }
+              >
+                <Item>{item.dddd}</Item>
               </Wrapper>
             </Cell>
           );
         })}
 
-        {datesOfNextMonth.map((item: number, i: number) => {
+        {datesOfNextMonth.map((item: any, i: number) => {
           return (
             <Cell>
               <Wrapper>
-                <ItemDesc>{item}</ItemDesc>
+                <ItemInactive>{item.dddd}</ItemInactive>
               </Wrapper>
             </Cell>
           );

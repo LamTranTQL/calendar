@@ -13,6 +13,11 @@ export const CalendarContextProvider = ({
   let date = new Date();
   const [currYear, setCurrYear] = useState<number>(date.getFullYear());
   const [currMonth, setCurrMonth] = useState<number>(date.getMonth());
+  const isToday: any = {
+    yyyy: date.getFullYear(),
+    mmmm: date.getMonth(),
+    dddd: date.getDate(),
+  };
   const Months = [
     "Jan",
     "Feb",
@@ -33,33 +38,70 @@ export const CalendarContextProvider = ({
   const firtDayOfNextMonth = getDay(new Date(currYear, currMonth + 1, 1));
   const lastDayOfLastMonth = getDaysInMonth(new Date(currYear, currMonth - 1));
 
-  const datesOfLastMonth: number[] = [];
-  const datesOfMonth: number[] = [];
-  const datesOfNextMonth: number[] = [];
+  const datesOfLastMonth: any[] = [];
+  const datesOfMonth: any[] = [];
+  const datesOfNextMonth: any[] = [];
 
   for (let i = firtDayOfMonth; i > 0; i--) {
-    datesOfLastMonth.push(lastDayOfLastMonth - i + 1);
+    let yy: number = currYear;
+    let mm: number = currMonth;
+    if (currMonth === 0) {
+      yy = yy - 1;
+      mm = 11;
+    } else {
+      mm = mm - 1;
+    }
+    datesOfLastMonth.push({
+      yyyy: yy,
+      mmmm: mm,
+      dddd: lastDayOfLastMonth - i + 1,
+    });
   }
 
   for (let i = 1; i <= datesInMonth; i++) {
-    datesOfMonth.push(i);
-  }
-
-  for (let i = firtDayOfNextMonth; i < 7; i++) {
-    datesOfNextMonth.push(i - firtDayOfNextMonth + 1);
+    datesOfMonth.push({ yyyy: currYear, mmmm: currMonth, dddd: i });
   }
 
   if (
-    datesOfLastMonth.length + datesOfMonth.length + datesOfNextMonth.length <
-    42
+    42 -
+      (datesOfLastMonth.length +
+        datesOfMonth.length +
+        datesOfNextMonth.length) >
+    7
   ) {
-    let temp = datesOfNextMonth[datesOfNextMonth.length - 1];
-    for (let i = 1; i < 8; i++) {
-      datesOfNextMonth.push(temp + i);
+    for (let i = firtDayOfNextMonth; i < 14; i++) {
+      let yy: number = currYear;
+      let mm: number = currMonth;
+      if (currMonth === 11) {
+        yy = yy + 1;
+        mm = 0;
+      } else {
+        mm = mm + 1;
+      }
+      datesOfNextMonth.push({
+        yyyy: yy,
+        mmmm: mm,
+        dddd: i - firtDayOfNextMonth + 1,
+      });
+    }
+  } else {
+    for (let i = firtDayOfNextMonth; i < 7; i++) {
+      let yy: number = currYear;
+      let mm: number = currMonth;
+      if (currMonth === 11) {
+        yy = yy + 1;
+        mm = 0;
+      } else {
+        mm = mm + 1;
+      }
+      datesOfNextMonth.push({
+        yyyy: yy,
+        mmmm: mm,
+        dddd: i - firtDayOfNextMonth + 1,
+      });
     }
   }
 
-  console.log(datesOfNextMonth);
   const value = {
     currYear,
     setCurrYear,
@@ -69,7 +111,11 @@ export const CalendarContextProvider = ({
     datesOfMonth,
     datesOfLastMonth,
     datesOfNextMonth,
+    isToday,
   };
+
+  console.log(isToday);
+
   return (
     <CalendarContext.Provider value={value}>
       {children}

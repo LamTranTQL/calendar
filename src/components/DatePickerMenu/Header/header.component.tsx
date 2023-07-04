@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { HeaderContainer, Navigation, Title } from "./header.styled";
+import { FlexRow, HeaderContainer, Navigation } from "./header.styled";
 import IconArrowLeft from "./Icon/arrow-left.svg";
 import IconArrowDoubleLeft from "./Icon/arrow-double-left.svg";
 import IconArrowRight from "./Icon/arrow-right.svg";
 import IconArrowDoubleRight from "./Icon/arrow-double-right.svg";
 import ButtonIcon from "../../Button/ButtonIcon/buttonIcon.component";
 import { CalendarContext } from "../../Context/calendarContext.provider";
-import { setYear } from "date-fns";
+import ButtonText from "../../Button/ButtonText/buttonText.component";
 
 function Header() {
   const { Months, currMonth, currYear, setCurrMonth, setCurrYear } =
@@ -44,7 +44,11 @@ function Header() {
         <ButtonIcon onClick={handlePrevYear} icon={IconArrowDoubleLeft} />
         <ButtonIcon onClick={handlePrevMonth} icon={IconArrowLeft} />
       </Navigation>
-      <Title>{`${Months[currMonth]} ${currYear}`}</Title>
+      <FlexRow>
+        <ButtonText children={Months[currMonth]} />
+        <ButtonText children={currYear} />
+      </FlexRow>
+      {/* <Title>{`${Months[currMonth]} ${currYear}`}</Title> */}
       <Navigation>
         <ButtonIcon onClick={handleNextMonth} icon={IconArrowRight} />
         <ButtonIcon onClick={handleNextYear} icon={IconArrowDoubleRight} />

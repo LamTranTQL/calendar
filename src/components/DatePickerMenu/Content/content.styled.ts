@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   cursor: pointer;
   transition: all 0.1s ease-in-out;
   &:hover {
-    border: 1px solid #072947;
+    background-color: #f0f0f0;
   }
 `;
 
@@ -45,8 +45,8 @@ const Item = styled.span`
   color: #3a3a3a;
 `;
 
-const ItemDesc = styled(Item)`
+const ItemInactive = styled(Item)`
   color: #bcbcbc;
 `;
 
-export { Model, Row, Cell, Wrapper, Item, ItemDesc };
+export { Model, Row, Cell, Wrapper, Item, ItemInactive };
