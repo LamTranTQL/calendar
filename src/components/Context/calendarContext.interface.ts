@@ -6,9 +6,10 @@ export interface CalendarContextType {
   currMonth: number;
   setCurrMonth: any;
   Months: string[];
-  datesOfLastMonth: number[];
-  datesOfMonth: number[];
-  datesOfNextMonth: number[];
+  datesOfLastMonth: any[];
+  datesOfMonth: any[];
+  datesOfNextMonth: any[];
+  isToday: any;
 }
 
 export interface CalendarContextProviderType {

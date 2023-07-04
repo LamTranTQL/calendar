@@ -1,6 +1,6 @@
 import React from "react";
-import { Bottom, Model } from "./datePickerMenu.styled";
-import Checkbox from "../Checkbox/checkbox.component";
+import { Model } from "./datePickerMenu.styled";
+// import Checkbox from "../Checkbox/checkbox.component";
 import Header from "./Header/header.component";
 import Content from "./Content/content.component";
 
@@ -9,9 +9,9 @@ function DatePickerMenu() {
     <Model>
       <Header />
       <Content />
-      <Bottom>
+      {/* <Bottom>
         <Checkbox />
-      </Bottom>
+      </Bottom> */}
     </Model>
   );
 }

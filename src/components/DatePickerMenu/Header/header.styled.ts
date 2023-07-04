@@ -20,6 +20,14 @@ const Navigation = styled.div`
   align-items: center;
 `;
 
+const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0px 4px;
+`;
+
 const Title = styled.span`
   font-weight: 500;
   font-size: 14px;
@@ -27,4 +35,4 @@ const Title = styled.span`
   color: #3a3a3a;
 `;
 
-export { HeaderContainer, Navigation, Title };
+export { HeaderContainer, Navigation, Title, FlexRow };

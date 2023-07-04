@@ -1,12 +1,12 @@
 import "./App.css";
 import { CalendarContextProvider } from "./components/Context/calendarContext.provider";
-import DatePickerMenu from "./components/DatePickerMenu/datePickerMenu.component";
+import Input from "./components/Input/input.component";
 
 function App() {
   return (
     <div className="App">
       <CalendarContextProvider>
-        <DatePickerMenu />
+        <Input />
       </CalendarContextProvider>
     </div>
   );
