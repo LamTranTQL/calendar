@@ -13,6 +13,13 @@ export const CalendarContextProvider = ({
   let date = new Date();
   const [currYear, setCurrYear] = useState<number>(date.getFullYear());
   const [currMonth, setCurrMonth] = useState<number>(date.getMonth());
+  const [valueSelected, setValueSelected] = useState<string>("");
+  const [isOptions, setIsOptions] = useState<boolean>(false);
+  const [selectDate, setSelectDate] = useState<any>({
+    yyyy: "",
+    mmmm: "",
+    dddd: "",
+  });
   const isToday: any = {
     yyyy: date.getFullYear(),
     mmmm: date.getMonth(),
@@ -112,9 +119,13 @@ export const CalendarContextProvider = ({
     datesOfLastMonth,
     datesOfNextMonth,
     isToday,
+    valueSelected,
+    setValueSelected,
+    isOptions,
+    setIsOptions,
+    selectDate,
+    setSelectDate,
   };
-
-  console.log(isToday);
 
   return (
     <CalendarContext.Provider value={value}>

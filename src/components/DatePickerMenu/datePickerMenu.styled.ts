@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Model = styled.div`
+  position: absolute;
   width: 280px;
   height: 278px;
   border-radius: 8px;
