@@ -35,4 +35,15 @@ const Title = styled.span`
   color: #3a3a3a;
 `;
 
-export { HeaderContainer, Navigation, Title, FlexRow };
+const PortalContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export { HeaderContainer, Navigation, Title, FlexRow, PortalContainer };

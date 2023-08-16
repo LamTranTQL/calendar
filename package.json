@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@mui/material": "^5.13.7",
     "@types/styled-components": "^5.1.26",
     "date-fns": "^2.30.0"
   }

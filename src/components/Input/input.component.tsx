@@ -4,11 +4,12 @@ import IconCalendarSVG from "./Calendar.svg";
 import { createPortal } from "react-dom";
 import DatePickerMenu from "../DatePickerMenu/datePickerMenu.component";
 import { CalendarContext } from "../Context/calendarContext.provider";
+import MonthOptions from "../MenuOptions/MonthOptions/monthOptions.component";
 
 const portalRoot = document.getElementById("portal") as HTMLElement;
 
 function Input() {
-  const { valueSelected, isOptions, setIsOptions } =
+  const { valueSelected, isOptions, setIsOptions, isMonthOptions } =
     useContext(CalendarContext);
 
   const [coords, setCoords] = useState<any>({
@@ -57,6 +58,17 @@ function Input() {
         createPortal(
           <DatePickerMenu
             ref={optionsRef}
+            style={{
+              left: coords.x,
+              top: coords.y + coords.height + 4 + "px",
+            }}
+          />,
+          portalRoot
+        )}
+
+      {isMonthOptions &&
+        createPortal(
+          <MonthOptions
             style={{
               left: coords.x,
               top: coords.y + coords.height + 4 + "px",
