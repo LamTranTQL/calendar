@@ -1,8 +1,13 @@
 import React from "react";
 import { ButtonModel } from "./buttonText.styled";
 
-function ButtonText(props: any) {
-  return <ButtonModel>{props.children}</ButtonModel>;
+interface ButtonTextProps {
+  children: string | number;
+  onClick?: () => void;
+}
+
+function ButtonText(props: ButtonTextProps) {
+  return <ButtonModel onClick={props.onClick}>{props.children}</ButtonModel>;
 }
 
 export default ButtonText;

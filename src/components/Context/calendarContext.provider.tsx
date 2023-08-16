@@ -15,6 +15,8 @@ export const CalendarContextProvider = ({
   const [currMonth, setCurrMonth] = useState<number>(date.getMonth());
   const [valueSelected, setValueSelected] = useState<string>("");
   const [isOptions, setIsOptions] = useState<boolean>(false);
+  const [isMonthOptions, setIsMonthOptions] = useState<boolean>(false);
+
   const [selectDate, setSelectDate] = useState<any>({
     yyyy: "",
     mmmm: "",
@@ -125,6 +127,8 @@ export const CalendarContextProvider = ({
     setIsOptions,
     selectDate,
     setSelectDate,
+    isMonthOptions,
+    setIsMonthOptions,
   };
 
   return (
